@@ -7,23 +7,19 @@ class Solution {
      */
     public void moveZeroes(int[] nums) {
         int n = nums.length;
-        int p = 0; // pointer at zero element
-        int q = 1; // pointer at non-zero element
-        while (p < n && q < n) { // TC: O(N)
-            while (p < n && nums[p] != 0) {
-                p++;
+        int zeroIdx = 0; // pointer at zero element
+        int idx = 0; // pointer at non-zero element
+        while (idx < n) { // TC: O(N)
+            if (nums[idx] == 0) {
+                idx++;
+            } else {
+                // swap nums[idx] with nums[zeroIdx]
+                int temp = nums[zeroIdx];
+                nums[zeroIdx] = nums[idx];
+                nums[idx] = temp;
+                zeroIdx++;
+                idx++;
             }
-            while (q < n && nums[q] == 0) {
-                q++;
-            }
-            if (p < q && q < n) {
-                // swap
-                int temp = nums[q];
-                nums[q] = nums[p];
-                nums[p] = temp;
-                p++;
-            }
-            q++;
         }
     }
 }
