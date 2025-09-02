@@ -25,6 +25,11 @@ class Solution {
                 int currentLength = i - hs.get(diff);
                 maxLength = Math.max(maxLength, currentLength);
             }
+            /**
+             * add sum to HashMap and don't update it if sum is present
+             * already as it will decrease the length of subarray 
+             * (i - hs.get(diff))
+             */
             if (!hs.containsKey(sum)) {
                 hs.put(sum, i);
             }
