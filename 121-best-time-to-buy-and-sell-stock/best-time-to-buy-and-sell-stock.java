@@ -1,11 +1,28 @@
 class Solution {
     /**
-     * Approach : Using Array Pre-Processing Approach
+     * Approach II : Using Simulation Approach
+     *
+     * TC: O(N) + O(N) ~ O(N)
+     * SC: O(1)
+     */
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int maxValue = Integer.MIN_VALUE;
+        int minPrice = prices[0];
+        for (int i = 1; i < n; i++) { // TC: O(N)
+            minPrice = Math.min(minPrice, prices[i]);
+            maxValue = Math.max(maxValue, prices[i] - minPrice); 
+        }
+        return maxValue == Integer.MIN_VALUE ? 0 : maxValue;
+    }
+
+    /**
+     * Approach I : Using Array Pre-Processing Approach
      *
      * TC: O(N) + O(N) ~ O(N)
      * SC: O(N)
      */
-    public int maxProfit(int[] prices) {
+    public int maxProfitArrayPreProcessing(int[] prices) {
         int n = prices.length;
         int[] maxPrice = new int[n]; // SC: O(N)
         maxPrice[n - 1] = prices[n - 1];
